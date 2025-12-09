@@ -28,7 +28,7 @@ public class PlaywrightFactory {
         }
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://www.amazon.com/");
+        page.navigate("https://naveenautomationlabs.com/opencart/");
         return page;
 
     }

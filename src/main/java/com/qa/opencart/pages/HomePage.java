@@ -16,15 +16,21 @@ public class HomePage {
 
     //3. Page actions/methods
     public String getHomePageTitle(){
-         return page.title();
+         String title = page.title();
+        System.out.println("page title is :"+title);
+        return title;
     }
     public String getHomePageURL (){
+       String url = page.url();
+        System.out.println("Page url : "+ url);
         return page.url();
     }
     public String searchProduct(String productName){
         page.fill(searchField, productName);
         page.click(searchButton);
-       return page.textContent(searchPageHeader);
+        String header = page.textContent(searchPageHeader);
+        System.out.println("Search header : "+header);
+        return header;
     }
 
 }
