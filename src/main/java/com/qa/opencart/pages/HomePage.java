@@ -14,4 +14,17 @@ public class HomePage {
          this.page = page;  // 📦 ← 📬 Put delivery into storage
     }
 
+    //3. Page actions/methods
+    public String getHomePageTitle(){
+         return page.title();
+    }
+    public String getHomePageURL (){
+        return page.url();
+    }
+    public String searchProduct(String productName){
+        page.fill(searchField, productName);
+        page.click(searchButton);
+       return page.textContent(searchPageHeader);
+    }
+
 }
