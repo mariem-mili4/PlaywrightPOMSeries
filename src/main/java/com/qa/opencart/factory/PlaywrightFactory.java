@@ -2,12 +2,20 @@ package com.qa.opencart.factory;
 
 import com.microsoft.playwright.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 //🏭 Factory = مصنع
 public class PlaywrightFactory {
     Playwright playwright;// playwright is of class Playwright
     Browser browser;
     BrowserContext browserContext;//to create an isolated browsing env
     Page page;
+    Properties prop;
+
 //void: When the methode perform an action without returning any value
     public Page initBrowser (String browserName) {
 
@@ -30,6 +38,11 @@ public class PlaywrightFactory {
         page = browserContext.newPage();
         page.navigate("https://naveenautomationlabs.com/opencart/");
         return page;
-
+    }
+    public Properties initProp() throws IOException {
+        FileInputStream ip = new FileInputStream ("src/test/resources/config/config.properties");// open this file and read it
+        prop.load(ip);//loading all key-values pairs from that file
+        return prop;
     }
 }
+
