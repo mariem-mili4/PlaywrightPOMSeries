@@ -17,7 +17,8 @@ public class PlaywrightFactory {
     Properties prop;
 
 //void: When the methode perform an action without returning any value
-    public Page initBrowser (String browserName) {
+    public Page initBrowser (Properties prop) {
+        String browserName = prop.getProperty("browser").trim();
 
         System.out.println("Browser name is :"+browserName);
         playwright = Playwright.create(); //create a Playwright instance
@@ -36,12 +37,19 @@ public class PlaywrightFactory {
         }
         browserContext = browser.newContext();
         page = browserContext.newPage();
-        page.navigate("https://naveenautomationlabs.com/opencart/");
+        page.navigate(prop.getProperty("url").trim());
         return page;
     }
-    public Properties initProp() throws IOException {
-        FileInputStream ip = new FileInputStream ("src/test/resources/config/config.properties");// open this file and read it
-        prop.load(ip);//loading all key-values pairs from that file
+    public Properties initProp() {
+        try{
+            FileInputStream ip = new FileInputStream ("./src/test/resources/config/config.properties");// open this file and read it
+            prop = new Properties();
+            prop.load(ip);//loading all key-values pairs from that file
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         return prop;
     }
 }

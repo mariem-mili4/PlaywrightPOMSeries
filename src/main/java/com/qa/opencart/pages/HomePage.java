@@ -3,7 +3,7 @@ package com.qa.opencart.pages;
 import com.microsoft.playwright.Page;
 
 public class HomePage {
-    Page page;          // 📦 Storage box (empty)
+   private Page page;          // 📦 Storage box (empty)
     //1. String Locators
     private String searchField = "//input[@name='search']";
     private  String searchButton = "//button[@class='btn btn-default btn-lg']";
