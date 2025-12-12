@@ -8,6 +8,9 @@ public class HomePage {
     private String searchField = "//input[@name='search']";
     private  String searchButton = "//button[@class='btn btn-default btn-lg']";
     private String searchPageHeader = "div#content h1";
+    private String loginLink = "a:text('Login')";
+    private String AccountLink = "a[title='My Account']";
+
 
     //2. Page constructor :
     public HomePage(Page page){ // 📬 Delivery (page arrives)
@@ -31,6 +34,11 @@ public class HomePage {
         String header = page.textContent(searchPageHeader);
         System.out.println("Search header : "+header);
         return header;
+    }
+    public LoginPage naviagteToLoginPage(){
+        page.click(AccountLink);
+        page.click(loginLink);
+        return new LoginPage(page);
     }
 
 }
