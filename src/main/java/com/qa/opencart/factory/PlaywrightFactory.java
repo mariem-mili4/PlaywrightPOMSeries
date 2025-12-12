@@ -19,8 +19,6 @@ public class PlaywrightFactory {
 //void: When the methode perform an action without returning any value
     public Page initBrowser (Properties prop) {
         String browserName = prop.getProperty("browser").trim();
-
-        System.out.println("Browser name is :"+browserName);
         playwright = Playwright.create(); //create a Playwright instance
         switch (browserName) {
             case "chrome" :

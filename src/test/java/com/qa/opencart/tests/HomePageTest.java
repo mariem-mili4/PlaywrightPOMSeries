@@ -1,6 +1,7 @@
 package com.qa.opencart.tests;
 
 import com.microsoft.playwright.Page;
+import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.factory.PlaywrightFactory;
 import com.qa.opencart.pages.HomePage;
 import com.qa.opencart.tests.BaseTest ;
@@ -13,12 +14,12 @@ public class HomePageTest extends BaseTest {
     @Test
     public void HomePageTitleTest(){
         String actualTitle = homePage.getHomePageTitle();
-        Assert.assertEquals(actualTitle,"Your Store");
+        Assert.assertEquals(actualTitle, AppConstants.LOGIN_PAGE_TITLE);
     }
     @Test
     public void HomePageURLTest(){
         String actualURL = homePage.getHomePageURL();
-        Assert.assertEquals(actualURL,"https://naveenautomationlabs.com/opencart/");
+        Assert.assertEquals(actualURL,AppConstants.URL);
     }
     @DataProvider
     public Object[][] getProductNames(){
